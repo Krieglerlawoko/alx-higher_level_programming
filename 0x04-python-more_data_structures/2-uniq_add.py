@@ -4,7 +4,7 @@ def uniq_add(my_list=[]):
     digit = 0
 
     for a in list2:
-        count += a
+        digit += a
 
     return (digit)
 
