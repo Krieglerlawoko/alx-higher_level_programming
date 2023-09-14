@@ -5,4 +5,3 @@ def print_sorted_dictionary(a_dictionary):
 
     for a in ordered:
         print("{}: {}".format(a, a_dictionary.get(a)))
-

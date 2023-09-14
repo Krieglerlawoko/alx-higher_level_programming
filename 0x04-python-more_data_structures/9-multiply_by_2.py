@@ -7,4 +7,3 @@ def multiply_by_2(a_dictionary):
         dir2[a] *= 2
 
     return (dir2)
-
