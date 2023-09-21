@@ -6,7 +6,7 @@ num = abs(number) % 10
 
 if number < 0:
     num = -digit
-print("Last digit of {} is {} is".format(number, num), end="")
+print("Last digit of {} is {} and is".format(number, num), end="")
 if digit == 0:
     print("0")
 elif digit > 5:
