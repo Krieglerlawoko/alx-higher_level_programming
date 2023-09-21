@@ -5,7 +5,7 @@ num = abs(number) % 10
 
 if number < 0:
     num = -num
-    print("Last digit of {} is {} and is".format(number, num), end="")
+print("Last digit of {} is {} and is".format(number, num), end="")
 if num == 0:
     print("0")
 elif num > 5:
