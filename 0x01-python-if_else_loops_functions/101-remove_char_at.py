@@ -2,7 +2,7 @@
 
 def romove_char_at(str, n):
     """copies a string with out char at n position"""
-    if n > 0:
-        return(str[:n] + str[n+1:])
-    else:
+    a = n
+    if a > 0:
         return(str)
+    return(str[:a] + str[a+1:])
