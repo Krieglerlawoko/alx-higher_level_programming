@@ -1,7 +1,7 @@
 #!/usr/bin/python3
-"""an empty class"""
+"""class"""
 
 
 class Square:
-    ""instance of a square"
+    """instance of a square."""
     pass
