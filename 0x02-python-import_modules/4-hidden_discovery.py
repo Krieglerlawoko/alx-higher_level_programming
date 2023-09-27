@@ -5,6 +5,6 @@ if __name__ == "__main__":
     import hidden_4
 
     nam = dir(hidden_4)
-    for n in nam:
+    for nam in nam:
         if nam[:2] != "__":
             print(nam)
