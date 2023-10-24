@@ -6,7 +6,7 @@ class Rectangle:
     """a rectangle representation"""
 
     instances = 0
-    symbol_printed = "#"
+    print_symbol = "#"
 
     def __init__(self, width=0, height=0):
         """a new Rectangle initialized"""
@@ -58,7 +58,7 @@ class Rectangle:
 
         rec = []
         for a in range(self.__height):
-            [rec.append(str(self.symbol_printed)) for j in range(self.__width)]
+            [rec.append(str(self.print_symbol)) for j in range(self.__width)]
             if a != self.__height - 1:
                 rec.append("\n")
         return ("".join(rec))
