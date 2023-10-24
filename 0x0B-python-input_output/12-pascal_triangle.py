@@ -4,15 +4,15 @@
 
 def pascal_triangle(n):
     """Pascal's Triangle of size n"""
-    if a <= 0:
+    if n <= 0:
         return []
 
     t = [[1]]
-    while len(t) != a:
-        tri = t[-1]
-        tmp = [1]
-        for j in range(len(tri) - 1):
-            tmp.append(tri[j] + tri[j + 1])
-        tmp.append(1)
-        t.append(tmp)
+    while len(t) != n:
+        tr = t[-1]
+        tm = [1]
+        for j in range(len(tr) - 1):
+            tm.append(tr[j] + tr[j + 1])
+        tm.append(1)
+        t.append(tm)
     return t
