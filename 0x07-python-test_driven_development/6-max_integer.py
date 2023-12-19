@@ -4,7 +4,7 @@
 
 def max_integer(list=[]):
     """Returns max int in a list"""
-    if len(list) = 0:
+    if len(list) == 0:
         return None
     maxRes = list[0]
     a = 1
