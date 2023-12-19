@@ -1,0 +1,9 @@
+#!/usr/bin/python3
+"""matrice multiplication function that uses Numpy"""
+import numpy as nump
+
+
+def lazy_matrix_mul(m_a, m_b):
+    """multiplication of 2 matrices returned"""
+
+    return (nump.matmul(m_a, m_b))

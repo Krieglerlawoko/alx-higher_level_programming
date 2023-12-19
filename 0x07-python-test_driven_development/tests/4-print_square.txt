@@ -1,0 +1,14 @@
+#!/usr/bin/python3
+"""square_printing function defined"""
+
+
+def print_square(size):
+    """square printed with #"""
+    if not isinstance(size, int):
+        raise TypeError("size must be an integer")
+    if size < 0:
+        raise valueError("size must be >= 0")
+
+    for a in range(size):
+        [print("#", end="") for b in range(size)]
+        print("")
