@@ -1,5 +1,3 @@
-sh: 1: const: not found
-12-object.js
 const myObject = {
   type: 'object',
   value: 12
