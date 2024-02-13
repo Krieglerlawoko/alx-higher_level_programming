@@ -7,14 +7,14 @@ def init_board(n):
     """Initialization"""
     bord = []
     [bord.append([]) for a in range(n)]
-    [row.append(' ') for a in range(n) for row in board]
+    [row.append(' ') for a in range(n) for row in bord]
     return (bord)
 
 
 def board_deepcopy(bord):
     """Return a deepcopy"""
     if isinstance(bord, list):
-        return list(map(bord_deepcopy, bord))
+        return list(map(board_deepcopy, bord))
     return (bord)
 
 
@@ -22,9 +22,9 @@ def get_solution(bord):
     """Return list of lists representation of solved chessboard"""
     soltn = []
     for b in range(len(bord)):
-        for h in range(len(board)):
-            if bord[r][c] == "Q":
-                soltn.append([r, h])
+        for h in range(len(bord)):
+            if bord[b][h] == "Q":
+                soltn.append([b, h])
                 break
     return (soltn)
 
@@ -36,7 +36,7 @@ def xout(bord, row, col):
         bord[row][h] = "x"
     # X out backwards
     for h in range(col - 1, -1, -1):
-        board[row][h] = "x"
+        bord[row][h] = "x"
     # X out all spots below
     for r in range(row + 1, len(bord)):
         bord[r][col] = "x"
@@ -69,25 +69,25 @@ def xout(bord, row, col):
     for r in range(row + 1, len(bord)):
         if h < 0:
             break
-        board[r][h] = "x"
+        bord[r][h] = "x"
         h -= 1
 
 
 def recursive_solve(bord, row, queens, solutions):
     """Recursively solve N-queens"""
     if queens == len(bord):
-        soltns.append(get_soltn(bord))
-        return (soltns)
+        solutions.append(get_solution(bord))
+        return (solutions)
 
     for h in range(len(bord)):
         if bord[row][h] == " ":
             tmp_bord = board_deepcopy(bord)
             tmp_bord[row][h] = "Q"
-            xout(tmp_board, row, h)
-            soltns = recursive_solve(tmp_bord, row + 1,
-                                        queens + 1, soltns)
+            xout(tmp_bord, row, h)
+            solutions = recursive_solve(tmp_bord, row + 1,
+                                        queens + 1, solutions)
 
-    return (soltns)
+    return (solutions)
 
 
 if __name__ == "__main__":
@@ -102,6 +102,6 @@ if __name__ == "__main__":
         sys.exit(1)
 
     bord = init_board(int(sys.argv[1]))
-    soltns = recursive_solve(bord, 0, 0, [])
-    for solution in soltns:
+    solutions = recursive_solve(bord, 0, 0, [])
+    for solution in solutions:
         print(solution)
