@@ -21,6 +21,6 @@ if __name__ == '__main__':
     newcity = City(name='San Francisco')
     newState.cities.append(newcity)
 
-    ses.add(newstate)
-    ses.add(newcity)
-    ses.commit()
+    session.add(newstate)
+    session.add(newcity)
+    session.commit()
