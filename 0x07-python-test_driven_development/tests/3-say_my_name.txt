@@ -1,11 +1,67 @@
-#!/usr/bin/python3
-"""name-printing function defined"""
+===========================
+Using 3-say_my_name.py
+===========================
 
+Modules defines function ``say_my_name(first_name, last_name="")``.
 
-def say_my_name(first_name, last_name="")
-    """a name printed"""
-    if not isinstance(first_name, str):
-        raise TypeError("first_name must be a string")
-    if not isinstance(last_name, str):
-        raise TypeError("last_name must be a stirng")
-    print("My name is {} {}".format(first_name, last_name))
+Usage
+=====
+
+``say_my_name(...)`` prints "My name is <first_name> <last_name>".
+
+::
+
+    >>> say_my_name = __import__('3-say_my_name').say_my_name
+    >>> say_my_name("Ojok", "Daniel")
+    My name is Ojok Daniel
+
+::
+
+    >>> say_my_name("Emmanuel", "Jinkens")
+    My name is Emmanuel Jinkens
+
+The parameter ```last_name``` is optional. If no last name is provided,
+an empty string is printed instead.
+
+::
+
+    >>> say_my_name("Emmanuel")
+    My name is Emmanuel 
+
+Invalid Names
+=============
+
+The parameters ``first_name`` and ``last_name``` must be strings. Otherwise,
+a TypeError is raised.
+
+::
+
+    >>> say_my_name(5, "Emmanuel")
+    Traceback (most recent call last):
+    TypeError: first_name must be a string
+
+::
+
+    >>> say_my_name(None)
+    Traceback (most recent call last):
+    TypeError: first_name must be a string
+
+::
+
+    >>> say_my_name("Emmanuel", ["kevin", "Opira", "Heat"])
+    Traceback (most recent call last):
+    TypeError: last_name must be a string
+
+::
+
+    >>> say_my_name({"Bennon": 5, "John": 32}, 6.7)
+    Traceback (most recent call last):
+    TypeError: first_name must be a string
+
+Least one name must be provided.
+
+::
+
+    >>> say_my_name()
+    Traceback (most recent call last):
+    TypeError: say_my_name() missing 1 required positional argument: 'first_name'

@@ -1,14 +1,94 @@
-#!/usr/bin/python3
-"""square_printing function defined"""
+============================
+Using 4-print_square.py
+============================
+
+This module defines a square-printing function ``print_square(size)``.
+
+Usage
+=====
+
+Squares are printed using the ``#``. Parameter ``size``
+represents height and width of square.
+
+::
+
+    >>> print_square = __import__('4-print_square').print_square
+    >>> print_square(2)
+    ##
+    ##
+::
+
+    >>> print_square()
+    ###
+    ###
+    ###
 
 
-def print_square(size):
-    """square printed with #"""
-    if not isinstance(size, int):
-        raise TypeError("size must be an integer")
-    if size < 0:
-        raise valueError("size must be >= 0")
+::
 
-    for a in range(size):
-        [print("#", end="") for b in range(size)]
-        print("")
+    >>> print_square(9)
+    #########
+    #########
+    #########
+    #########
+    #########
+    #########
+    #########
+    #########
+    #########
+
+If ``size`` = zero, function prints nothing.
+
+::
+
+    >>> print_square(0)
+
+Invalid Sizes
+=============
+
+Parameter ``size`` must be an integer. else, a TypeError is raised.
+::
+
+    >>> print_square(5.7)
+    Traceback (most recent call last):
+    TypeError: size must be an integer
+
+::
+
+    >>> print_square(None)
+    Traceback (most recent call last):
+    TypeError: size must be an integer
+
+
+::
+
+    >>> print_square("not int")
+    Traceback (most recent call last):
+    TypeError: size must be an integer
+
+If ``size`` is less than zero, a ValueError is raised.
+
+::
+
+    >>> print_square(-2)
+    Traceback (most recent call last):
+    ValueError: size must be >= 0
+
+Note that type-checking occurs before value-checking.
+
+::
+
+    >>> print_square()
+    Traceback (most recent call last):
+    TypeError: print_square() missing 1 required argument: 'size'
+
+::
+
+    >>> print_square(-3.2)
+    Traceback (most recent call last):
+    TypeError: size must be an integer
+
+At least one argument must be provided.
+
+
+0x07-python-test_driven_development/tests/5-text_indentation.txt

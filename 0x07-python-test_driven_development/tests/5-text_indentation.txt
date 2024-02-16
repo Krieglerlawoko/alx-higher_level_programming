@@ -1,23 +1,212 @@
-ndentation function defined"""
+================================
+Using 5-text_indentation.py
+================================
+
+This module defines a text-indentation function ``text_indentation(text)``.
+
+Usage
+=====
+
+Text printed with two new lines after each characters ``.``, ``?``,
+and ``:``.
+
+::
+
+    >>> text_indentation = __import__('5-text_indentation').text_indentation
+    >>> text_indentation("Hi?")
+    Hi?
+    <BLANKLINE>
+
+Spaces are not printed at the beginning of a line.
+
+::
+
+    >>> text_indentation("          ")
+
+::
+
+    >>> text_indentation("   Hello there.")
+    Hello there.
+    <BLANKLINE>
+
+Similarly, no spaces printed at end of each printed line.
+
+::
+
+    >>> text_indentation("    What!.    A mess.   ")
+    What!.
+    <BLANKLINE>
+    A mess.
+    <BLANKLINE>
+
+::
+
+    >>> text_indentation("Hi.   ")
+    Hi.
+    <BLANKLINE>
+
+New lines only printed for characters ``.``, ``?``, and ``:`` -
+text not ending with one of these characters is not ended with a new line.
+
+::
+
+    >>> text_indentation("No ending period, what bad grammar")
+    No ending period, what bad grammar
+
+New lines within a string are printed as normal.
+
+::
+
+    >>> text_indentation("\n\n\n We just printed three blank lines.")
+    <BLANKLINE>
+    <BLANKLINE>
+    <BLANKLINE>
+    We just printed three blank lines.
+    <BLANKLINE>
+
+::
+
+    >>> text_indentation("Let's print new-line! Here:\nPrinted.")
+    Let's print new-line! Here:
+    <BLANKLINE>
+    <BLANKLINE>
+    Printed.
+    <BLANKLINE>
 
 
-def text_indentation(text):
-    """text printed with 2 lines after each '?', '.', and ':'.
-    """
-    if not isinstance(text, str):
-        raise TypeError("text must be a string")
+::
+    >>> text_indentation("A sneaky \n new line.")
+    A sneaky 
+    new line.
+    <BLANKLINE>
 
-    a = 0
-    while a < len(text) and text[a] == ' ':
-        a += 1
+A combo example:
 
-    while a < len(text):
-        print(text[a], end="")
-        if text[a] == "\n" or text[a] in ".?:":
-            if text[a] in ".?:":
-                print("\n")
-            a += 1
-            while a < len(text) and text[a] == ' ':
-                a += 1
-            continue
-        a += 1
+::
+
+    >>> text_indentation("Lorem ipsum dolor sit amet, consectetur adipiscing "
+    ... "elit. Quonam modo? Utrum igitur tibi litteram videor an totas paginas "
+    ... "sermone vario sex illa a Dipylo stadia confecimus. Sin aliud quid "
+    ... "commovere? Non autem hoc: igitur ne illud quidem. Fortasse id optimum, "
+    ... "sed ubi illud: Plus semper voluptatis? Teneo, inquit, finem illi videri "
+    ... "nihil dolere. Transfer idem ad modestiam vel temperantiam, quae est "
+    ... "moderatio cupiditatum rationi oboediens. Si id dicis, vicimus. Inde "
+    ... "voles, postea. Quae animi affectio suum cuique tribuens atque hanc, "
+    ... "quam dico. Utinam quidem dicerent alium alio beatiorem! Iam ruinas "
+    ... "videres") # doctest: +NORMALIZE_WHITESPACE
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    <BLANKLINE>
+    Quonam modo?
+    <BLANKLINE>
+    Utrum igitur tibi litteram videor an totas paginas commovere?
+    <BLANKLINE>
+    Non autem hoc:
+    <BLANKLINE>
+    igitur ne illud quidem.
+    <BLANKLINE>
+    Fortasse id optimum, sed ubi illud:
+    <BLANKLINE>
+    Plus semper voluptatis?
+    <BLANKLINE>
+    Teneo, inquit, finem illi videri nihil dolere.
+    <BLANKLINE>
+    Transfer idem ad modestiam vel temperantiam, 
+    quae est moderatio cupiditatum rationi oboediens.
+    <BLANKLINE>
+    Si id dicis, vicimus.
+    <BLANKLINE>
+    Inde sermone vario sex illa a Dipylo stadia confecimus.
+    <BLANKLINE>
+    Sin aliud quid voles, postea.
+    <BLANKLINE>
+    Quae animi affectio suum cuique tribuens atque hanc, quam dico.
+    <BLANKLINE>
+    Utinam quidem dicerent alium alio beatiorem! Iam ruinas videres
+
+Invalid Text
+============
+
+The paramter ``text`` must be a str else, a TypeError raised.
+
+::
+
+    >>> text_indentation(2)
+    Traceback (most recent call last):
+    TypeError: text must be a string
+
+::
+
+    >>> text_indentation(None)
+    Traceback (most recent call last):
+    TypeError: text must be a string
+
+::
+
+    >>> text_indentation({"one": 2, "two": 6})
+    Traceback (most recent call last):
+    TypeError: text must be a string
+
+0x07-python-test_driven_development/tests/6-max_integer_test.py
+
+#!/usr/bin/python3
+
+"""Unittests for max_integer([..])."""
+
+import unittest
+max_integer = __import__('6-max_integer').max_integer
+
+
+class TestMaxInteger(unittest.TestCase):
+    """Unittests for max_integer([..])."""
+
+    def test_ordered_list(self):
+        """Test ordered list of int."""
+        ordered = [1, 2, 3, 6]
+        self.assertEqual(max_integer(ordered), 6)
+
+    def test_unordered_list(self):
+        """Test an unordered list of int."""
+        unordered = [1, 2, 6, 3]
+        self.assertEqual(max_integer(unordered), 6)
+
+    def test_max_at_begginning(self):
+        """Test a list with beginning max value."""
+        max_at_beginning = [6, 3, 2, 1]
+        self.assertEqual(max_integer(max_at_beginning), 6)
+
+    def test_empty_list(self):
+        """Test empty list."""
+        empty = []
+        self.assertEqual(max_integer(empty), None)
+
+    def test_one_element_list(self):
+        """Test a list with single element."""
+        one_element = [9]
+        self.assertEqual(max_integer(one_element), 9)
+
+    def test_floats(self):
+        """Test a list of floats."""
+        floats = [4.53, 1.33, -8.123, 19.2, 3.0]
+        self.assertEqual(max_integer(floats), 19.2)
+
+    def test_ints_and_floats(self):
+        """Test list of ints and floats."""
+        ints_and_floats = [1.53, 19.8, -4, 19, 8]
+        self.assertEqual(max_integer(ints_and_floats), 19.8)
+
+    def test_string(self):
+        """Test a string."""
+        string = "Brad"
+        self.assertEqual(max_integer(string), 'r')
+
+    def test_list_of_strings(self):
+        """Test a list of strings."""
+        strings = ["Brad", "is", "my", "name"]
+        self.assertEqual(max_integer(strings), "name")
+
+    def test_empty_string(self):
+        """Test an empty string."""
+        self.assertEqual(max_integer(""), None)
+
+if __name__ == '__main__':
+    unittest.main()
