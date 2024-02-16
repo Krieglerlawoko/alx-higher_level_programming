@@ -1,12 +1,12 @@
 #!/usr/bin/python3
 """
-Creates the State "California" with the City "San Francisco" from a DB
+State "California" with the City "San Francisco" from a DB creatd
 """
 import sys
-from relationship_state import Base, State
-from sqlalchemy.orm import sessionmaker
-from relationship_city import City
 from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from relationship_state import Base, State
+from relationship_city import City
 
 if __name__ == '__main__':
     eng = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.
@@ -14,13 +14,13 @@ if __name__ == '__main__':
                            pool_pre_ping=True)
     Base.metadata.create_all(eng)
 
-    Ses = sessionmaker(bind=eng)
-    ses = Session()
+    Session = sessionmaker(bind=eng)
+    session = Session()
 
-    newstate = State(name='California')
-    newcity = City(name='San Francisco')
-    newState.cities.append(newcity)
+    newState = State(name='California')
+    newCity = City(name='San Francisco')
+    newState.cities.append(newCity)
 
-    session.add(newstate)
-    session.add(newcity)
+    session.add(newState)
+    session.add(newCity)
     session.commit()
