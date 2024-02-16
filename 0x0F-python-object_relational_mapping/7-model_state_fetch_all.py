@@ -13,5 +13,5 @@ if __name__ == "__main__":
     Base.metadata.create_all(eng)
     Session = sessionmaker(bind=eng)
     session = Session()
-    for i in session.query(State).order_by(State.id):
-        print(instance.id, i.name, sep=": ")
+    for instance in session.query(State).order_by(State.id):
+        print(instance.id, instance.name, sep=": ")
