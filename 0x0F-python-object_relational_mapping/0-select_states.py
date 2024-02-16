@@ -1,8 +1,8 @@
 #!/usr/bin/python3
-"""All states from the database hbtn_0e_0_usa listd"""
+"""All states from the database
+	hbtn_0e_0_usa listd"""
 import sys
 import MySQLdb
-
 
 if __name__ == "__main__":
     dtb = MySQLdb.connect(host="localhost", user=sys.argv[1],
